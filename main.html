@@ -13,6 +13,9 @@
         <p id="economy">Economy: 50</p>
         <p id="dignity">Dignity: 50</p>
     </div>
+    <div id="result">
+        <!-- Placeholder for event result -->
+    </div>
     <div id="event">
         <p>Welcome to the kingdom! An event occurs...</p>
     </div>
@@ -42,26 +45,6 @@
             updateEventDisplay();
         });
         // JavaScript code goes here
-        // Sample game events and choices
-        /*
-        const events = [
-            {
-                text: "A dragon attacks the kingdom!",
-                choices: [
-                    { text: "Fight the dragon", effects: { physical: -10, mental: -5, economy: -15, dignity: -10 } },
-                    { text: "Surrender", effects: { physical: -5, mental: -10, economy: -5, dignity: -15 } }
-                ]
-            },
-            {
-                text: "A famine strikes the land.",
-                choices: [
-                    { text: "Allocate food reserves", effects: { physical: -5, mental: -5, economy: -10, dignity: -5 } },
-                    { text: "Seek foreign aid", effects: { physical: -5, mental: -10, economy: -15, dignity: -10 } }
-                ]
-            }
-            // Add more events here
-        ];
-       */
         let currentEventIndex = 0;
 
         let states = {
@@ -109,6 +92,19 @@
         function handleChoice(choiceIndex) {
             const choiceEffects = events[currentEventIndex].choices[choiceIndex].effects;
             applyEffects(choiceEffects);
+            const choiceResult = events[currentEventIndex].choices[choiceIndex].result;
+            if (choiceResult) {
+                displayResult(choiceResult);
+            } else {
+                displayResult("No result description available.");
+            }
+
+            console.log("currentEventIndex: ", currentEventIndex);
+            console.log("choiceIndex: ", choiceIndex);
+            console.log("events: ", events);
+            console.log("choiceEffects: ", choiceEffects);
+            console.log("result", choiceResult);
+
             currentEventIndex++;
             updateEventDisplay();
         }
@@ -120,7 +116,12 @@
                 states[state] = Math.max(0, Math.min(100, states[state])); // Ensure values stay within the range of 0 to 100
             }
         }
-
+  
+        // Function to display the choice result
+        function displayResult(resultText) {
+            const resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = "<p>" + resultText + "</p>";
+        }
         // Set up event listeners
         document.getElementById("choice1").addEventListener("click", handleChoice);
         document.getElementById("choice2").addEventListener("click", handleChoice);

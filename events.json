@@ -2,15 +2,23 @@
     {
         "text": "A dragon attacks the kingdom!",
         "choices": [
-            { "text": "Fight the dragon", "effects": { "physical": -10, "mental": -5, "economy": -15, "dignity": -10 } },
-            { "text": "Surrender", "effects": { "physical": -5, "mental": -10, "economy": -5, "dignity": -15 } }
+            { "text": "Fight the dragon", 
+                "effects": { "physical": -10, "mental": -5, "economy": -15, "dignity": -10 }, 
+                "result": "You bravely fought the dragon, but your people suffered heavy casualties." },
+            { "text": "Surrender", 
+                "effects": { "physical": -5, "mental": -10, "economy": -5, "dignity": -15 }, 
+                "result": "You chose to surrender, and the dragon spares your kingdom, but at a great cost to your dignity." }
         ]
     },
     {
         "text": "A famine strikes the land.",
         "choices": [
-            { "text": "Allocate food reserves", "effects": { "physical": -5, "mental": -5, "economy": -10, "dignity": -5 } },
-            { "text": "Seek foreign aid", "effects": { "physical": -5, "mental": -10, "economy": -15, "dignity": -10 } }
+            { "text": "Allocate food reserves", 
+                "effects": { "physical": -5, "mental": -5, "economy": -10, "dignity": -5 }, 
+                "result": "You allocated food reserves to help your people, but many still suffer from hunger." },
+            { "text": "Seek foreign aid", 
+                "effects": { "physical": -5, "mental": -10, "economy": -15, "dignity": -10 }, 
+                "result": "You sought foreign aid, which saved many lives, but some view it as a sign of weakness." }
         ]
     }
 ]
