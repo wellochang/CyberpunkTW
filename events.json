@@ -1,0 +1,17 @@
+[
+    {
+        "text": "A dragon attacks the kingdom!",
+        "choices": [
+            { "text": "Fight the dragon", "effects": { "physical": -10, "mental": -5, "economy": -15, "dignity": -10 } },
+            { "text": "Surrender", "effects": { "physical": -5, "mental": -10, "economy": -5, "dignity": -15 } }
+        ]
+    },
+    {
+        "text": "A famine strikes the land.",
+        "choices": [
+            { "text": "Allocate food reserves", "effects": { "physical": -5, "mental": -5, "economy": -10, "dignity": -5 } },
+            { "text": "Seek foreign aid", "effects": { "physical": -5, "mental": -10, "economy": -15, "dignity": -10 } }
+        ]
+    }
+]
+

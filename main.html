@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reigns-like Game</title>
+    <style>
+        /* Add some basic styles here */
+    </style>
+</head>
+<body>
+    <div id="states">
+        <p id="physical">Physical: 50</p>
+        <p id="mental">Mental: 50</p>
+        <p id="economy">Economy: 50</p>
+        <p id="dignity">Dignity: 50</p>
+    </div>
+    <div id="event">
+        <p>Welcome to the kingdom! An event occurs...</p>
+    </div>
+    <div id="choices">
+        <button id="choice1">Choice 1</button>
+        <button id="choice2">Choice 2</button>
+    </div>
+
+    <script>
+        // Function to fetch and load events from JSON file
+        async function loadEvents() {
+            try {
+                const response = await fetch('events.json');
+                const eventData = await response.json();
+                return eventData;
+            } catch (error) {
+                console.error('Error loading events:', error);
+                return [];
+            }
+        }
+
+        // Initialize the game
+        let events = [];
+
+        loadEvents().then((eventData) => {
+            events = eventData;
+            updateEventDisplay();
+        });
+        // JavaScript code goes here
+        // Sample game events and choices
+        /*
+        const events = [
+            {
+                text: "A dragon attacks the kingdom!",
+                choices: [
+                    { text: "Fight the dragon", effects: { physical: -10, mental: -5, economy: -15, dignity: -10 } },
+                    { text: "Surrender", effects: { physical: -5, mental: -10, economy: -5, dignity: -15 } }
+                ]
+            },
+            {
+                text: "A famine strikes the land.",
+                choices: [
+                    { text: "Allocate food reserves", effects: { physical: -5, mental: -5, economy: -10, dignity: -5 } },
+                    { text: "Seek foreign aid", effects: { physical: -5, mental: -10, economy: -15, dignity: -10 } }
+                ]
+            }
+            // Add more events here
+        ];
+       */
+        let currentEventIndex = 0;
+
+        let states = {
+            physical: 50,
+            mental: 50,
+            economy: 50,
+            dignity: 50
+        };
+
+        //Function to update the displayed event and choices
+        function updateEventDisplay() {
+            // Update state values display
+            for (let state in states) {
+                document.getElementById(state).textContent = state.charAt(0).toUpperCase() + state.slice(1) + ": " + states[state];
+            }
+
+            if (currentEventIndex < events.length) {
+                const event = events[currentEventIndex];
+                document.getElementById("event").innerHTML = "<p>" + event.text + "</p>";
+
+                const choicesContainer = document.getElementById("choices");
+                choicesContainer.innerHTML = ""; // Clear previous choices
+
+                if (event.choices) {
+                    event.choices.forEach((choice, index) => {
+                        const button = document.createElement("button");
+                        button.textContent = choice.text;
+                        button.addEventListener("click", () => handleChoice(index));
+                        choicesContainer.appendChild(button);
+                    });
+                }
+            } else {
+                document.getElementById("event").innerHTML = "<p>Event end.</p>";
+                document.getElementById("choices").innerHTML = "";
+            }
+        }
+        // Update state values display
+        document.getElementById("physical").textContent = "Physical: " + states.physical;
+        document.getElementById("mental").textContent = "Mental: " + states.mental;
+        document.getElementById("economy").textContent = "Economy: " + states.economy;
+        document.getElementById("dignity").textContent = "Dignity: " + states.dignity;
+
+
+        // Function to handle a choice
+        function handleChoice(choiceIndex) {
+            const choiceEffects = events[currentEventIndex].choices[choiceIndex].effects;
+            applyEffects(choiceEffects);
+            currentEventIndex++;
+            updateEventDisplay();
+        }
+                
+        // Function to apply effects to states
+        function applyEffects(effects) {
+            for (let state in effects) {
+                states[state] += effects[state] || 0;
+                states[state] = Math.max(0, Math.min(100, states[state])); // Ensure values stay within the range of 0 to 100
+            }
+        }
+
+        // Set up event listeners
+        document.getElementById("choice1").addEventListener("click", handleChoice);
+        document.getElementById("choice2").addEventListener("click", handleChoice);
+
+        // Initialize the game
+        updateEventDisplay();
+
+    </script>
+</body>
+</html>
+
