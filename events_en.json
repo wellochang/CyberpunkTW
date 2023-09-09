@@ -1,0 +1,107 @@
+[
+    {
+        "text": "A megacorporation demands your personal data.",
+        "choices": [
+            {
+                "text": "Give in to the demands",
+                "effects": {
+                    "mental": -10,
+                    "economy": 10,
+                    "dignity": -5
+                },
+                "result": "You reluctantly surrender your personal data to the megacorporation. Your bank account grows, but your sense of privacy diminishes."
+            },
+            {
+                "text": "Refuse and fight for privacy",
+                "effects": {
+                    "mental": 5,
+                    "economy": -5,
+                    "dignity": 10
+                },
+                "result": "You stand up for your privacy and refuse to give in. The megacorporation backs off, but it comes at a cost to your finances."
+            }
+        ]
+    },
+    {
+        "text": "A cyber-enhancement clinic offers you an upgrade.",
+        "choices": [
+            {
+                "text": "Enhance your body with cybernetics",
+                "effects": {
+                    "physical": 10,
+                    "mental": 5,
+                    "dignity": -5
+                },
+                "result": "You opt for cybernetic enhancements, boosting your physical and mental capabilities. However, you begin to feel less human."
+            },
+            {
+                "text": "Decline the offer to maintain your humanity",
+                "effects": {
+                    "mental": -5,
+                    "dignity": 10
+                },
+                "result": "You choose to maintain your humanity and decline the cyber-enhancements. Your dignity remains intact, but you miss out on potential enhancements."
+            }
+        ]
+    },
+    {
+        "text": "You stumble upon an underground hacker's den.",
+        "choices": [
+            {
+                "text": "Join the hackers and become a cybercriminal",
+                "effects": { "mental": 10, "economy": 5, "dignity": -10 },
+                "result": "You decide to join the hackers and become a cybercriminal. Your mental skills improve, but your dignity takes a hit as you embrace the dark side of the net."
+            },
+            {
+                "text": "Report the den to the authorities",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "You choose to report the den to the authorities. Your dignity remains intact, but you feel like a traitor to the hacker community."
+            }
+        ]
+    },
+    {
+        "text": "A mysterious AI offers you a lucrative hacking job.",
+        "choices": [
+            {
+                "text": "Accept the AI's job offer",
+                "effects": { "mental": 10, "economy": 15, "dignity": -10 },
+                "result": "You accept the AI's job offer, and your bank account swells with credits. Your hacking skills improve, but your sense of morality suffers."
+            },
+            {
+                "text": "Reject the AI's offer to maintain your ethics",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "You decline the AI's offer to maintain your ethical stance. Your dignity remains high, but you miss out on a fortune."
+            }
+        ]
+    },
+    {
+        "text": "A megacorporation recruits you as a corporate spy.",
+        "choices": [
+            {
+                "text": "Become a corporate spy",
+                "effects": { "mental": 10, "economy": 10, "dignity": -15 },
+                "result": "You agree to become a corporate spy for the megacorporation. Your mental and financial skills improve, but your sense of dignity takes a nosedive."
+            },
+            {
+                "text": "Refuse the corporate espionage offer",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "You decline the offer, preserving your dignity but forgoing the opportunity for wealth and power."
+            }
+        ]
+    },
+    {
+        "text": "You discover a secret conspiracy involving government and corporations.",
+        "choices": [
+            {
+                "text": "Expose the conspiracy to the public",
+                "effects": { "mental": 10, "dignity": 15 },
+                "result": "You expose the conspiracy to the public, becoming a hero of the people and boosting your mental skills and dignity."
+            },
+            {
+                "text": "Stay silent and avoid the danger",
+                "effects": { "mental": -5, "dignity": -10 },
+                "result": "You decide to stay silent, avoiding danger but living with the guilt of not acting against the conspiracy."
+            }
+        ]
+    }
+]

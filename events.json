@@ -1,24 +1,107 @@
 [
     {
-        "text": "A dragon attacks the kingdom!",
+        "text": "一家巨型企業要求你的個人數據。",
         "choices": [
-            { "text": "Fight the dragon", 
-                "effects": { "physical": -10, "mental": -5, "economy": -15, "dignity": -10 }, 
-                "result": "You bravely fought the dragon, but your people suffered heavy casualties." },
-            { "text": "Surrender", 
-                "effects": { "physical": -5, "mental": -10, "economy": -5, "dignity": -15 }, 
-                "result": "You chose to surrender, and the dragon spares your kingdom, but at a great cost to your dignity." }
+            {
+                "text": "屈服於要求",
+                "effects": {
+                    "mental": -10,
+                    "economy": 10,
+                    "dignity": -5
+                },
+                "result": "你不情願地向巨型企業交出了你的個人數據。你的銀行帳戶增加了，但你的隱私感減少了。"
+            },
+            {
+                "text": "拒絕並捍衛隱私",
+                "effects": {
+                    "mental": 5,
+                    "economy": -5,
+                    "dignity": 10
+                },
+                "result": "你為了保護你的隱私而拒絕讓步。巨型企業退卻了，但這對你的財務造成了損失。"
+            }
         ]
     },
     {
-        "text": "A famine strikes the land.",
+        "text": "一家機械增強診所提供給你升級的機會。",
         "choices": [
-            { "text": "Allocate food reserves", 
-                "effects": { "physical": -5, "mental": -5, "economy": -10, "dignity": -5 }, 
-                "result": "You allocated food reserves to help your people, but many still suffer from hunger." },
-            { "text": "Seek foreign aid", 
-                "effects": { "physical": -5, "mental": -10, "economy": -15, "dignity": -10 }, 
-                "result": "You sought foreign aid, which saved many lives, but some view it as a sign of weakness." }
+            {
+                "text": "用機械增強改進你的身體",
+                "effects": {
+                    "physical": 10,
+                    "mental": 5,
+                    "dignity": -5
+                },
+                "result": "你選擇了機械增強，提高了你的身體和心理能力。然而，你開始感覺自己變得不那麼人類。"
+            },
+            {
+                "text": "拒絕為了保持人性",
+                "effects": {
+                    "mental": -5,
+                    "dignity": 10
+                },
+                "result": "你選擇保持人性，拒絕了機械增強的機會。你的尊嚴保持不變，但你錯過了潛在的提升。"
+            }
+        ]
+    },
+    {
+        "text": "你偶然發現了地下黑客巢穴。",
+        "choices": [
+            {
+                "text": "加入黑客，成為網絡罪犯",
+                "effects": { "mental": 10, "economy": 5, "dignity": -10 },
+                "result": "你決定加入黑客，成為網絡罪犯。你的心理技能得到提高，但當你接受網絡黑暗面時，你的尊嚴受損。"
+            },
+            {
+                "text": "向當局舉報黑巢",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "你選擇向當局舉報巢穴。你的尊嚴保持不變，但你感到自己背叛了黑客社區。"
+            }
+        ]
+    },
+    {
+        "text": "一個神秘的人工智慧向你提供了一份豐厚的黑客工作。",
+        "choices": [
+            {
+                "text": "接受人工智慧的工作提議",
+                "effects": { "mental": 10, "economy": 15, "dignity": -10 },
+                "result": "你接受了人工智慧的工作提議，你的銀行帳戶充滿了信用。你的黑客技能得到提高，但你的道德感受到了損害。"
+            },
+            {
+                "text": "拒絕人工智慧的提議以保持道德",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "你拒絕了人工智慧的提議，以保持道德立場。你的尊嚴保持高尚，但你錯過了一筆財富。"
+            }
+        ]
+    },
+    {
+        "text": "一家巨型企業招募你作為企業間諜。",
+        "choices": [
+            {
+                "text": "成為企業間諜",
+                "effects": { "mental": 10, "economy": 10, "dignity": -15 },
+                "result": "你同意成為巨型企業的企業間諜。你的心理和財務技能得到提高，但你的尊嚴感受到了重大損害。"
+            },
+            {
+                "text": "拒絕企業間諜的工作提議",
+                "effects": { "mental": -5, "dignity": 10 },
+                "result": "你拒絕了工作提議，保持了你的尊嚴，但錯過了財富和權力的機會。"
+            }
+        ]
+    },
+    {
+        "text": "你發現一個涉及政府和企業的秘密陰謀。",
+        "choices": [
+            {
+                "text": "向公眾揭示陰謀",
+                "effects": { "mental": 10, "dignity": 15 },
+                "result": "你向公眾揭示了陰謀，成為人民的英雄，提高了你的心理技能和尊嚴。"
+            },
+            {
+                "text": "保持沉默以避免危險",
+                "effects": { "mental": -5, "dignity": -10 },
+                "result": "你決定保持沉默，避免危險，但必須承受不行動對陰謀的罪惡感。"
+            }
         ]
     }
 ]
