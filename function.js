@@ -27,7 +27,6 @@ loadEvents().then((eventData) => {
     updateEventDisplay();
 });
 
-// JavaScript code goes here
 let currentEventIndex = 0;
 
 let states = {
@@ -63,13 +62,19 @@ function updateEventDisplay() {
         document.getElementById("event").innerHTML = "<p>Event end.</p>";
         document.getElementById("choices").innerHTML = "";
     }
+    // Update state values display with descriptive intervals
+    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical) + " " + states.physical;
+    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental) + " " + states.mental;
+    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy) + " " + states.economy;
+    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity) + " " + states.dignity;
 }
 // Update state values display
+/*
 document.getElementById("physical").textContent = "Physical: " + states.physical;
 document.getElementById("mental").textContent = "Mental: " + states.mental;
 document.getElementById("economy").textContent = "Economy: " + states.economy;
 document.getElementById("dignity").textContent = "Dignity: " + states.dignity;
-
+*/
 
 // Function to handle a choice
 function handleChoice(choiceIndex) {
@@ -81,15 +86,20 @@ function handleChoice(choiceIndex) {
     } else {
         displayResult("No result description available.");
     }
+    
+    // Check if any state is below 0 or all states are below 25
+    if (isGameOver()) {
+        endGame("Game Over - You've lost!");
+        document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical) + " " + states.physical;
+        document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental) + " " + states.mental;
+        document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy) + " " + states.economy;
+        document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity) + " " + states.dignity;
 
-    console.log("currentEventIndex: ", currentEventIndex);
-    console.log("choiceIndex: ", choiceIndex);
-    console.log("events: ", events);
-    console.log("choiceEffects: ", choiceEffects);
-    console.log("result", choiceResult);
-
-    currentEventIndex++;
-    updateEventDisplay();
+        //document.getElementById("choices").innerHTML = "";
+    } else {
+        currentEventIndex++;
+        updateEventDisplay();
+    }
 }
         
 // Function to apply effects to states
@@ -98,6 +108,39 @@ function applyEffects(effects) {
         states[state] += effects[state] || 0;
         states[state] = Math.max(0, Math.min(100, states[state])); // Ensure values stay within the range of 0 to 100
     }
+}
+
+// Function to get state interval
+function getStateInterval(value) {
+    if (value <= 24) {
+        return "Despair";
+    } else if (value <= 49) {
+        return "Low";
+    } else if (value <= 74) {
+        return "Normal";
+    } else {
+        return "Sufficient";
+    }
+}
+
+// Function to check game over conditions
+function isGameOver() {
+    if (
+        states.physical < 5 ||
+        states.mental < 5 ||
+        states.economy < 5 ||
+        states.dignity < 5 ||
+        (states.physical < 25 && states.mental < 25 && states.economy < 25 && states.dignity < 25)
+    ) {
+        return true;
+    }
+    return false;
+}
+// Function to end the game
+function endGame(message) {
+    document.getElementById("event").innerHTML = "<p>" + message + "</p>";
+    document.getElementById("choices").innerHTML = "<p>The game is over.</p>";
+    // Optionally, you can provide a button to restart the game here
 }
 
 // Function to display the choice result
