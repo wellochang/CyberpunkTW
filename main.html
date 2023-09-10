@@ -37,13 +37,23 @@
             }
         }
 
+        // Function to shuffle an array using Fisher-Yates algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
         // Initialize the game
         let events = [];
 
         loadEvents().then((eventData) => {
             events = eventData;
+            shuffleArray(events);
             updateEventDisplay();
         });
+
         // JavaScript code goes here
         let currentEventIndex = 0;
 
@@ -53,7 +63,7 @@
             economy: 50,
             dignity: 50
         };
-
+    
         //Function to update the displayed event and choices
         function updateEventDisplay() {
             // Update state values display
