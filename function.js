@@ -63,10 +63,10 @@ function updateEventDisplay() {
         document.getElementById("choices").innerHTML = "";
     }
     // Update state values display with descriptive intervals
-    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical) + " " + states.physical;
-    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental) + " " + states.mental;
-    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy) + " " + states.economy;
-    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity) + " " + states.dignity;
+    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical);// + " " + states.physical;
+    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental);// + " " + states.mental;
+    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);// + " " + states.economy;
+    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);// + " " + states.dignity;
 }
 // Update state values display
 /*
@@ -90,10 +90,10 @@ function handleChoice(choiceIndex) {
     // Check if any state is below 0 or all states are below 25
     if (isGameOver()) {
         endGame("Game Over - You've lost!");
-        document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical) + " " + states.physical;
-        document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental) + " " + states.mental;
-        document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy) + " " + states.economy;
-        document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity) + " " + states.dignity;
+        document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical);
+        document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental);
+        document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);
+        document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);
 
         //document.getElementById("choices").innerHTML = "";
     } else {
