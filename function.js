@@ -28,6 +28,7 @@ loadEvents().then((eventData) => {
 });
 
 let currentEventIndex = 0;
+let roundCounter = 0;
 
 let states = {
     physical: 50,
@@ -68,6 +69,12 @@ function updateEventDisplay() {
     document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);// + " " + states.economy;
     document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);// + " " + states.dignity;
 }
+
+function updateRoundCounter() {
+    const roundCounterElement = document.getElementById("roundCounter");
+    roundCounterElement.textContent = "Round: " + roundCounter;
+}
+
 // Update state values display
 /*
 document.getElementById("physical").textContent = "Physical: " + states.physical;
@@ -99,6 +106,8 @@ function handleChoice(choiceIndex) {
     } else {
         currentEventIndex++;
         updateEventDisplay();
+        roundCounter++;
+        updateRoundCounter();
     }
 }
         
@@ -112,12 +121,20 @@ function applyEffects(effects) {
 
 // Function to get state interval
 function getStateInterval(value) {
-    if (value <= 24) {
+    if (value < 5) {
+        return "Doomed";
+    } else if (value <= 12) {
+        return "Despair-";
+    } else if (value <= 24) {
         return "Despair";
+    } else if (value <= 34) {
+        return "Low-";
     } else if (value <= 49) {
         return "Low";
-    } else if (value <= 74) {
+    } else if (value <= 51) { 
         return "Normal";
+    } else if (value <= 74) {
+        return "Normal+";
     } else {
         return "Sufficient";
     }
