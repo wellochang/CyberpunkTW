@@ -34,7 +34,8 @@ let states = {
     physical: 50,
     mental: 50,
     economy: 50,
-    dignity: 50
+    dignity: 50,
+    personality: 50
 };
 
 //Function to update the displayed event and choices
@@ -63,11 +64,13 @@ function updateEventDisplay() {
         document.getElementById("event").innerHTML = "<p>Event end.</p>";
         document.getElementById("choices").innerHTML = "";
     }
+    
     // Update state values display with descriptive intervals
-    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical);// + " " + states.physical;
-    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental);// + " " + states.mental;
-    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);// + " " + states.economy;
-    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);// + " " + states.dignity;
+    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical);
+    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental);
+    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);
+    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);
+    document.getElementById("personality").textContent = "personality: " + states.personality;  // show personality for debugging
 }
 
 function updateRoundCounter() {
@@ -114,8 +117,26 @@ function handleChoice(choiceIndex) {
 // Function to apply effects to states
 function applyEffects(effects) {
     for (let state in effects) {
-        states[state] += effects[state] || 0;
-        states[state] = Math.max(0, Math.min(100, states[state])); // Ensure values stay within the range of 0 to 100
+        if (state === 'personality' && effects[state]) {
+            // 如果 'effects' 中有 'personality' 鍵，並且其值不為空
+            // 則影響 'personality' 並確保其值在0到100之間
+            states['personality'] += effects['personality'];
+            states['personality'] = Math.max(0, Math.min(100, states['personality']));
+            // 接著檢查是否存在 'mental' 並且其值不為空
+            if ('mental' in effects && effects['mental'] !== null) {
+                // 若 'personality' 值小於50，將 'mental' 乘以-1
+                if (states['personality'] < 50) {
+                    effects['mental'] *= -1;
+                }
+                
+                // 將 'mental' 值添加到 'states' 的 'mental' 屬性中
+                states['mental'] += effects['mental'];
+                states['mental'] = Math.max(0, Math.min(100, states['mental']));
+            } 
+        } else {
+            states[state] += effects[state] || 0;
+            states[state] = Math.max(0, Math.min(100, states[state])); // Ensure values stay within the range of 0 to 100
+        }
     }
 }
 
