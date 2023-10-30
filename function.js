@@ -41,10 +41,11 @@ let states = {
 //Function to update the displayed event and choices
 function updateEventDisplay() {
     // Update state values display
+    /*
     for (let state in states) {
         document.getElementById(state).textContent = state.charAt(0).toUpperCase() + state.slice(1) + ": " + states[state];
     }
-
+    */
     if (currentEventIndex < events.length) {
         const event = events[currentEventIndex];
         document.getElementById("event").innerHTML = "<p>" + event.text + "</p>";
@@ -66,10 +67,10 @@ function updateEventDisplay() {
     }
     
     // Update state values display with descriptive intervals
-    document.getElementById("physical").textContent = "Physical: " + getStateInterval(states.physical);
-    document.getElementById("mental").textContent = "Mental: " + getStateInterval(states.mental);
-    document.getElementById("economy").textContent = "Economy: " + getStateInterval(states.economy);
-    document.getElementById("dignity").textContent = "Dignity: " + getStateInterval(states.dignity);
+    document.getElementById("physical").textContent = "*Physical*: " + getStateInterval(states.physical) + " " + states.physical;;
+    document.getElementById("mental").textContent   = "*Mental***: " + getStateInterval(states.mental) + " " + states.mental;
+    document.getElementById("economy").textContent  = "*Economy**: " + getStateInterval(states.economy) + " " + states.economy;
+    document.getElementById("dignity").textContent  = "*Dignity**: " + getStateInterval(states.dignity) + " " + states.dignity;
     document.getElementById("personality").textContent = "personality: " + states.personality;  // show personality for debugging
 }
 
@@ -143,21 +144,21 @@ function applyEffects(effects) {
 // Function to get state interval
 function getStateInterval(value) {
     if (value < 5) {
-        return "Doomed";
+        return " ";
     } else if (value <= 12) {
-        return "Despair-";
+        return "*";
     } else if (value <= 24) {
-        return "Despair";
+        return "**";
     } else if (value <= 34) {
-        return "Low-";
+        return "***";
     } else if (value <= 49) {
-        return "Low";
+        return "****";
     } else if (value <= 51) { 
-        return "Normal";
+        return "*****";
     } else if (value <= 74) {
-        return "Normal+";
+        return "******";
     } else {
-        return "Sufficient";
+        return "*******";
     }
 }
 
